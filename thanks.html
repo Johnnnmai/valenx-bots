@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Thanks — Valenx</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header>
+  <div class="brand"><a href="index.html">Valenx</a></div>
+</header>
+<main class="thanks">
+  <h1>You're in.</h1>
+  <p id="msg">Your Grok Bot setup link will be emailed within 12 hours.</p>
+  <p>Questions or didn't get it: <a href="mailto:hello@valenx.org">hello@valenx.org</a></p>
+  <p class="fine" id="meta"></p>
+  <p><a class="btn free" href="index.html">← Back to templates</a></p>
+</main>
+<script src="config.js"></script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var t = q.get("t") || "";
+  var free = q.get("free") === "1";
+  var session = q.get("session_id") || "";
+  var cfg = (window.VALENX_BOTS || {})[t] || {};
+  var msg = document.getElementById("msg");
+  if (cfg.share_url) {
+    msg.innerHTML = 'Your template is ready: <a href="' + cfg.share_url + '">Open setup link</a>.';
+  } else if (free) {
+    msg.textContent = "Free claim received. Your Grok Bot setup link will be emailed within 12 hours (share links go live after templates are published).";
+  } else {
+    msg.textContent = "Payment received. Your Grok Bot setup link will be emailed within 12 hours.";
+  }
+  var bits = [];
+  if (t) bits.push("product=" + t);
+  if (session) bits.push("session=" + session.slice(0, 12) + "…");
+  document.getElementById("meta").textContent = bits.join(" · ");
+})();
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@
   --accent: #6ee7a8;
   --buy: #3b82f6;
   --border: #243041;
+  --offer: #1a2433;
 }
 * { box-sizing: border-box; }
 body {
@@ -23,8 +24,18 @@ header, main, footer { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
   background: var(--card); border: 1px solid var(--border); border-radius: 12px;
   padding: 1.25rem;
 }
+.card.offer {
+  background: linear-gradient(160deg, var(--offer), var(--card));
+  border-color: #34506e;
+  margin-bottom: 1.25rem;
+}
+.offer-badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+}
 .card h2 { margin: 0 0 0.5rem; font-size: 1.15rem; }
 .blurb { color: var(--muted); margin: 0 0 1rem; font-size: 0.95rem; min-height: 3.6em; }
+.card.offer .blurb { min-height: 0; }
 .row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
 .price { font-weight: 700; font-size: 1.25rem; }
 .price.free { color: var(--accent); }
@@ -34,6 +45,10 @@ header, main, footer { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
 }
 .btn.buy { background: var(--buy); color: #fff; }
 .btn.free { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.btn.soon {
+  background: transparent; color: var(--muted); border: 1px dashed var(--border);
+  cursor: default; pointer-events: none;
+}
 footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 2rem; }
 .fine { font-size: 0.8rem; opacity: 0.8; }
 .thanks h1 { margin-top: 0; }
